@@ -1,0 +1,8 @@
+<app-navbar></app-navbar>
+<div class="wrapper">
+  <h2 class="header">My Games</h2>
+  <p *ngIf="cards.length === 0">You don't have any games</p>
+  <div class="games">
+    <app-card style="width: 32%" *ngFor="let card of cards" [card]="card"></app-card>
+  </div>
+</div>

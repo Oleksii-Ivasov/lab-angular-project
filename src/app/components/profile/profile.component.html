@@ -1,0 +1,59 @@
+<app-navbar></app-navbar>
+<div class="profile-page">
+  <form class="profile-form" [formGroup]="form" (ngSubmit)="updateUserData()">
+    <h2 class="profile-form__header">Profile</h2>
+    <label class="label" for="username">Username</label>
+    <input
+      type="text"
+      name="username"
+      placeholder="Username"
+      class="input"
+      formControlName="username"
+      [ngClass]="{
+        'has-error':
+          form.get('username')?.invalid && form.get('username')?.touched
+      }"
+    />
+    <p
+      class="error-message"
+      *ngIf="form.get('username')?.invalid && form.get('username')?.touched"
+    >
+      Username cannot be empty
+    </p>
+    <label class="label" for="email">Email</label>
+    <input
+      type="email"
+      name="email"
+      placeholder="Email"
+      class="input"
+      formControlName="email"
+      [ngClass]="{
+        'has-error': form.get('email')?.invalid && form.get('email')?.touched
+      }"
+    />
+    <p
+      class="error-message"
+      *ngIf="form.get('email')?.invalid && form.get('email')?.touched"
+    >
+      Invalid email address
+    </p>
+    <label class="label" for="age">Age</label>
+    <input
+      type="number"
+      name="age"
+      placeholder="Age"
+      class="input"
+      formControlName="age"
+      [ngClass]="{
+        'has-error': form.get('age')?.invalid && form.get('age')?.touched
+      }"
+    />
+    <p
+      class="error-message"
+      *ngIf="form.get('age')?.invalid && form.get('age')?.touched"
+    >
+      Invalid age value
+    </p>
+    <button class="button">Save</button>
+  </form>
+</div>
