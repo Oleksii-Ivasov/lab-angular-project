@@ -1,0 +1,43 @@
+<div class="login-page">
+  <form class="login-form" [formGroup]="form" (ngSubmit)="signIn()">
+    <h2 class="login-form__header">Sign In</h2>
+    <label class="label" for="email">Email</label>
+    <input
+      type="email"
+      name="email"
+      placeholder="Email"
+      class="input"
+      formControlName="email"
+      [ngClass]="{
+        'has-error': form.get('email')?.invalid && form.get('email')?.touched
+      }"
+    />
+    <p
+      class="error-message"
+      *ngIf="form.get('email')?.invalid && form.get('email')?.touched"
+    >
+      Invalid email address
+    </p>
+    <label class="label" for="password">Password</label>
+    <input
+      type="password"
+      name="password"
+      placeholder="Password"
+      class="input"
+      formControlName="password"
+      [ngClass]="{
+        'has-error':
+          form.get('password')?.invalid && form.get('password')?.touched
+      }"
+    />
+    <p
+      class="error-message"
+      *ngIf="form.get('password')?.invalid && form.get('password')?.touched"
+    >
+      Password cannot be less than 4 characters
+    </p>
+    <!-- <span *ngIf = "form.controls['email'].errors['required']">Password cannot be empty</span> -->
+    <!-- <span *ngIf ="form.get('password').errors['lengthError']">Password cannot less than 4 characters</span> -->
+    <button class="button">Sign In</button>
+  </form>
+</div>

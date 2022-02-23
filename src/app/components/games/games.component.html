@@ -1,0 +1,82 @@
+<app-navbar></app-navbar>
+<div class="wrapper">
+  <h2 class="header">Games</h2>
+  <label class="label" for="search">Search Games</label>
+  <div class="input-wrapper">
+    <input
+      #searchInput
+      class="search-input"
+      type="text"
+      placeholder="Search Games"
+    />
+    <button
+      class="search-btn button"
+      (click)="onFilterChange(searchInput.value)"
+    >
+      Search
+    </button>
+  </div>
+  <h2 class="header">Featured Games</h2>
+  <div class="wrapper__inner">
+    <div class="games">
+      <app-card
+        style="width: 32%"
+        *ngFor="
+          let cardItem of cards
+            | searchFilter: filterValue
+            | checkboxFilter: indieInputFilter: actionInputFilter: adventureInputFilter
+            | rangeFilter: rangeFilter
+        "
+        [card]="cardItem"
+      ></app-card>
+    </div>
+    <aside class="aside">
+      <p class="header">Filter by price</p>
+      <input
+        #rangeInput
+        class="range"
+        type="range"
+        name="range"
+        min="0"
+        max="2000"
+        value="2000"
+        (input)="onRangeChange(rangeInput.value)"
+      />
+      <label class="range-label" for="range">{{rangeInput.value}}</label>
+      <p class="header">Filter by tag</p>
+      <div class="input-elem">
+        <input
+          #indieInput
+          class="input-checkbox"
+          name="indie"
+          type="checkbox"
+          value="indie"
+          (input)="onInputChange(indieInput.value)"
+        />
+        <label class="label" for="indie">Indie</label>
+      </div>
+      <div class="input-elem">
+        <input
+          #actionInput
+          class="input-checkbox"
+          name="action"
+          type="checkbox"
+          value="action"
+          (input)="onInputChange(actionInput.value)"
+        />
+        <label class="label" for="action">Action</label>
+      </div>
+      <div class="input-elem">
+        <input
+          #adventureInput
+          class="input-checkbox"
+          name="adventure"
+          type="checkbox"
+          value="adventure"
+          (input)="onInputChange(adventureInput.value)"
+        />
+        <label class="label" for="adventure">Adventure</label>
+      </div>
+    </aside>
+  </div>
+</div>
