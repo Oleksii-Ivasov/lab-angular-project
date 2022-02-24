@@ -42,7 +42,7 @@ export class ProfileComponent implements OnInit {
         ?.setValue(this.userDataService.getData().username);
       this.form.get('email')?.setValue(this.userDataService.getData().email);
       this.form.get('age')?.setValue(+this.userDataService.getData().age);
-      alert('Data saved successfully')
+      alert('Data saved successfully');
     }
   }
 }

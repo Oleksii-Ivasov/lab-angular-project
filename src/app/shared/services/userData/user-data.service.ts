@@ -1,19 +1,15 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 import { userData } from '../../interfaces/userData';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserDataService {
- // @Input() userData!: userData;
   data: userData = {
     username: '',
     email: '',
-    age: ''
+    age: '',
   };
-  // private data = new BehaviorSubject('');
-  // currentData = this.data.asObservable();
 
   constructor() {}
 
@@ -22,6 +18,6 @@ export class UserDataService {
   }
 
   getData() {
-    return this.data
+    return this.data;
   }
 }

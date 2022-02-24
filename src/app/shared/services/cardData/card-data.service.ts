@@ -6,17 +6,39 @@ import { Card } from '../../interfaces/Card';
 })
 export class CardDataService {
   // @Input() userData!: userData;
-  data: Card[] = [];
-  // private data = new BehaviorSubject('');
-  // currentData = this.data.asObservable();
-
+  userCards: Card[] = [];
+  
   constructor() {}
 
-  setData(data: Card) {
-    this.data.push(data);
+  cards: Card[] = [];
+
+  addCard(card: Card) {
+    this.cards.push(card);
+    this.id++;
   }
 
-  getData() {
-    return this.data;
+  removeCard(card: Card) {
+    this.cards = this.cards.filter((el) => el !== card);
+  }
+
+  getCards() {
+    return this.cards;
+  }
+
+  id: number = 1;
+  setId(id: number) {
+    return (this.id = id);
+  }
+
+  getId() {
+    return this.id;
+  }
+
+  setUserCards(userCard: Card) {
+    this.userCards.push(userCard);
+  }
+
+  getUserCards() {
+    return this.userCards;
   }
 }

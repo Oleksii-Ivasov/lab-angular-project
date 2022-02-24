@@ -3,6 +3,11 @@
   <h2 class="header">My Games</h2>
   <p *ngIf="cards.length === 0">You don't have any games</p>
   <div class="games">
-    <app-card style="width: 32%" *ngFor="let card of cards" [card]="card"></app-card>
+    <app-card
+      style="width: 32%"
+      *ngFor="let card of cards"
+      [card]="card"
+      [disable]="this.disable"
+    ></app-card>
   </div>
 </div>

@@ -1,0 +1,10 @@
+<div class="friend-item">
+  <p class="friends__username">{{ this.friend.email }}</p>
+  <button
+    class="friends__button button"
+    [ngClass]="{ removeBtn: this.friendStatus === 'Remove' }"
+    (click)="_addFriend(friend)"
+  >
+    {{ friendStatus }} friend
+  </button>
+</div>

@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
-import { userData } from 'src/app/shared/interfaces/userData';
 import { UserDataService } from 'src/app/shared/services/userData/user-data.service';
 
 @Component({
@@ -11,7 +10,6 @@ import { UserDataService } from 'src/app/shared/services/userData/user-data.serv
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  //@Input() userData!: userData;
   form!: FormGroup;
   constructor(
     private router: Router,
@@ -20,10 +18,6 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // if (sessionStorage.getItem('user')) {
-    //   this.auth.isValidForm = true;
-    //   this.router.navigate(['/games']);
-    // }
     this.form = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
@@ -38,7 +32,7 @@ export class LoginComponent implements OnInit {
       this.userDataService.setData({
         username: '',
         email: this.form.get('email')?.value,
-        age: ''
+        age: '',
       });
       this.auth.isValidForm = true;
       sessionStorage.setItem('user', 'valid');

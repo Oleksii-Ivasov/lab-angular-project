@@ -6,6 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Card } from 'src/app/shared/interfaces/Card';
+import { CardDataService } from 'src/app/shared/services/cardData/card-data.service';
 
 @Component({
   selector: 'app-games',
@@ -13,9 +14,11 @@ import { Card } from 'src/app/shared/interfaces/Card';
   styleUrls: ['./games.component.scss'],
 })
 export class GamesComponent implements OnInit {
-  constructor() {}
+  constructor(private cardDataService: CardDataService) {}
   ngOnInit(): void {
-    this.createGameCards();
+    if (this.cardDataService.getCards().length === 0) {
+      this.createGameCards();
+    }
   }
   @ViewChild('indieInput') indieInput!: ElementRef;
   @ViewChild('actionInput') actionInput!: ElementRef;
@@ -28,26 +31,31 @@ export class GamesComponent implements OnInit {
     }
   }
 
-  filterValue!: string;
-  rangeFilter!: string;
+  filterValue: string = '';
+  rangeFilter: string = '';
   indieInputFilter: string = '';
   adventureInputFilter: string = '';
   actionInputFilter: string = '';
 
-  cards: Card[] = [];
+  removeCardFromGames(card: Card) {
+    this.cardDataService.removeCard(card);
+    this.cards = this.cardDataService.getCards();
+  }
 
+  cards: Card[] = this.cardDataService.getCards();
   createGameCards() {
     const tags = ['indie', 'action', 'adventure'];
     for (let i = 0; i < 9; i++) {
       let card = {
-        title: `Game ${i + 1}`,
+        id: this.cardDataService.getId(),
+        title: `Game ${this.cardDataService.getId()}`,
         price: Math.floor(Math.random() * 2000) + ' UAH',
         description: `Hell’s armies have invaded Earth. Become the Slayer in an epic
       single-player campaign to conquer demons across dimensions and stop the
       final destruction of humanity. The only thing they fear... is you.`,
         tag: tags[Math.floor(Math.random() * 3)],
       };
-      this.cards.push(card);
+      this.cardDataService.addCard(card);
     }
   }
 

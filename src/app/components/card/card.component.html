@@ -1,12 +1,19 @@
 <div class="card">
   <div class="card__top">
-    <h2 class="card__top-header header">{{this.card.title}}</h2>
-    <h2 class="card__top-price header">{{this.card.price}}</h2>
+    <h2 class="card__top-header header">{{ this.card.title }}</h2>
+    <h2 class="card__top-price header">{{ this.card.price }}</h2>
   </div>
   <div class="card__bottom">
     <div class="card__bottom-description">
-      {{this.card.description}}
+      {{ this.card.description }}
     </div>
-    <button class="card__bottom-btn" (click)="addToLibrary()">Add to Library</button>
+    <button #addToLibraryBtn
+      class="card__bottom-btn"
+      (click)="addToLibrary()"
+      (click)="_removeCardFromGames(card)"
+      [hidden]="this.disable"
+    >
+      Add to Library
+    </button>
   </div>
 </div>

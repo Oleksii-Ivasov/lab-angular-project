@@ -20,11 +20,15 @@
   <div class="wrapper__inner">
     <div class="games">
       <app-card
+        (removeCardFromGames)="removeCardFromGames($event)"
         style="width: 32%"
         *ngFor="
           let cardItem of cards
             | searchFilter: filterValue
-            | checkboxFilter: indieInputFilter: actionInputFilter: adventureInputFilter
+            | checkboxFilter
+              : indieInputFilter
+              : actionInputFilter
+              : adventureInputFilter
             | rangeFilter: rangeFilter
         "
         [card]="cardItem"
@@ -42,7 +46,7 @@
         value="2000"
         (input)="onRangeChange(rangeInput.value)"
       />
-      <label class="range-label" for="range">{{rangeInput.value}}</label>
+      <label class="range-label" for="range">{{ rangeInput.value }}</label>
       <p class="header">Filter by tag</p>
       <div class="input-elem">
         <input

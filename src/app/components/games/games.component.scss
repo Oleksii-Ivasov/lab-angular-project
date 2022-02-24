@@ -47,20 +47,20 @@
 }
 
 .wrapper__inner {
-    display: flex;
-    margin-top: 30px;
+  display: flex;
+  margin-top: 30px;
 }
 
 .games {
-    width:80%;
-    display: flex;
-    justify-items: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
+  width: 80%;
+  display: flex;
+  justify-items: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .header {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .aside {
@@ -68,15 +68,15 @@
 }
 
 .range-label {
-    text-align: center;
-    display: block;
-    margin-bottom: 20px;
+  text-align: center;
+  display: block;
+  margin-bottom: 20px;
 }
 
-.input-elem{
-    margin: 10px 20px;
+.input-elem {
+  margin: 10px 20px;
 }
 
 .label {
-    margin-left: 10px;  
+  margin-left: 10px;
 }

@@ -4,21 +4,21 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'searchFilter',
 })
 export class SearchFilterPipe implements PipeTransform {
-  transform(value: any, searchFilter: string,) {
-    if (!value) {
+  transform(cards: any, searchFilter: string) {
+    if (!cards) {
       return null;
     }
 
     if (!searchFilter) {
-      return value;
+      return cards;
     }
 
-    let cards = [];
-    for (let card of value) {
+    let cardsArr = [];
+    for (let card of cards) {
       if (card.title.toLowerCase().includes(searchFilter.toLowerCase())) {
-        cards.push(card);
+        cardsArr.push(card);
       }
     }
-    return cards;
+    return cardsArr;
   }
 }

@@ -13,9 +13,12 @@ import { FriendsComponent } from './components/friends/friends.component';
 import { GamesComponent } from './components/games/games.component';
 import { LibraryComponent } from './components/library/library.component';
 import { CardComponent } from './components/card/card.component';
-import { SearchFilterPipe } from './shared/pipes/search-filter/search-filter.pipe';
+import { SearchFilterPipe } from './shared/pipes/games-search-filter/games-search-filter.pipe';
 import { CheckboxFilterPipe } from './shared/pipes/checkboxFilter/checkbox-filter.pipe';
 import { RangeFilterPipe } from './shared/pipes/range-filter/range-filter.pipe';
+import { FriendComponent } from './components/friend/friend.component';
+import { FriendsSearchFilterPipe } from './shared/pipes/friends-search-filter/friends-search-filter.pipe';
+
 
 @NgModule({
   declarations: [
@@ -30,6 +33,8 @@ import { RangeFilterPipe } from './shared/pipes/range-filter/range-filter.pipe';
     SearchFilterPipe,
     CheckboxFilterPipe,
     RangeFilterPipe,
+    FriendComponent,
+    FriendsSearchFilterPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [AuthService, AuthGuardService],
